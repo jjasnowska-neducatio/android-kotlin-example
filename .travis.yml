@@ -1,0 +1,19 @@
+language: android
+jdk: openjdk7
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.gradle
+
+android:
+  components:
+    - tools
+    - android-23
+    - build-tools-23.0.2
+    - extra-google-google_play_services
+    - extra-android-support
+    - extra-android-m2repository
+    - extra-google-m2repository
+
+script: ./gradlew clean app:testDebugUnitTest

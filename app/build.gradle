@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
+
+        classpath "io.realm:realm-gradle-plugin:$libRealmNewVersion"
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "net.gouline.androidkotlinexample"
+        minSdkVersion 19
+        targetSdkVersion androidCompileSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro',
+                    'proguard-rules-debug.pro'
+            testProguardFile('proguard-rules-test.pro')
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    dexOptions {
+        javaMaxHeapSize '2048M'
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+repositories {
+    jcenter()
+}
+dependencies {
+    // Android/Google
+    compile "com.android.support:appcompat-v7:$libAndroidSupportVersion"
+
+    // Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+    // Architecture
+    compile "io.reactivex:rxjava:$libRxJavaVersion"
+
+    // Realm
+//    compile "io.realm:realm-android-library:libRealmOldVersion@aar"
+//    compile "io.realm:realm-annotations:libRealmOldVersion"
+//    kapt "io.realm:realm-annotations-processor:libRealmOldVersion"
+//    kapt "io.realm:realm-annotations:libRealmOldVersion"
+
+    // Unit tests
+    testCompile "org.robolectric:robolectric:$libRobolectricVersion"
+    testCompile "junit:junit:$libJUnitVersion"
+}
