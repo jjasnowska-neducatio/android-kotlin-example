@@ -75,5 +75,12 @@ dependencies {
 
     // Unit tests
     testCompile "org.robolectric:robolectric:$libRobolectricVersion"
+    testCompile "org.robolectric:shadows-support-v4:$libRobolectricVersion"
+    testCompile "org.mockito:mockito-core:$libMockitoVersion"
     testCompile "junit:junit:$libJUnitVersion"
+
+    testCompile "org.powermock:powermock-module-junit4:$libPowerMockVersion"
+    testCompile "org.powermock:powermock-module-junit4-rule:$libPowerMockVersion"
+    testCompile "org.powermock:powermock-api-mockito:$libPowerMockVersion"
+    testCompile "org.powermock:powermock-classloading-xstream:$libPowerMockVersion"
 }

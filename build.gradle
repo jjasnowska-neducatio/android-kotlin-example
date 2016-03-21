@@ -28,6 +28,8 @@ allprojects {
         libRealmNewVersion = '0.88.2'
 
         libRobolectricVersion = '3.0'
+        libMockitoVersion = '1.10.19'
+        libPowerMockVersion = '1.6.4'
         libJUnitVersion = '4.12'
     }
 }
