@@ -1,3 +1,3 @@
 # android-kotlin-example
 
-Example Android application written in Kotlin to demonstrate issues.
+Example Android application written in Kotlin for demonstration purposes
